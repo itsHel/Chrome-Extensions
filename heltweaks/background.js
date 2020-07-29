@@ -19,7 +19,6 @@ $(function(){
     $(window).on("focus", function(){
         hAltDown = false;
         hCtrlDown = false;
-        console.log("focused");
     });
     let hAltDown = false;
     let hCtrlDown = false;
