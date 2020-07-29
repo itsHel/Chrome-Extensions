@@ -1,0 +1,21 @@
+  {
+    "name": "HelTweaks",
+    "version": "1.0.2",
+    "description": "Customizing",
+    "options_page": "menu/menu.html",
+    "permissions": ["storage"],
+    "content_scripts": [ 
+      { 
+          "js": [ "jquery-min.js", "background.js" ],
+           "matches": [ "http://*/*", "https://*/*"]
+       }
+   ],
+    "icons": {
+      "16": "images/icon.png",
+      "32": "images/icon.png",
+      "48": "images/icon.png",
+      "128": "images/icon.png",
+      "200": "images/icon.png"
+    },
+    "manifest_version": 2
+  }

@@ -1,0 +1,141 @@
+body {
+  font-family: 'Mukta Malar', Arial;
+  line-height: 22px;
+  font-size: 16px;
+  background: #f8f9fa;
+}
+.main{
+  margin:50px auto;
+  width:680px;
+  color:white;
+  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.7);
+  padding:60px 25px;
+  min-height: 800px;
+}
+.row{
+  padding:30px;
+  display:flex;
+}
+.label{
+  color:rgba(0,0,0,0.5);
+  text-align: right;
+  flex-grow: 1;
+  font-weight: 600;
+}
+
+/* Toggle buttons */
+.switch {
+    height: 24px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+  }
+  .switch input {
+    display: none;
+  }
+  .switch input + span {
+    padding-left: 50px;
+    min-height: 24px;
+    line-height: 24px;
+    display: block;
+    color: #99A3BA;
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+  }
+  .switch input + span:before, .switch input + span:after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 12px;
+  }
+  .switch input + span:before {
+    top: 0;
+    left: 0;
+    width: 42px;
+    height: 24px;
+    background: #E4ECFA;
+    transition: all 0.3s ease;
+  }
+  .switch input + span:after {
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    top: 3px;
+    left: 3px;
+    box-shadow: 0 1px 3px rgba(18, 22, 33, 0.1);
+    transition: all 0.45s ease;
+  }
+  
+  .switch input + span strong {
+    font-weight: normal;
+    position: relative;
+    display: block;
+    top: 1px;
+  }
+  .switch input + span strong:before, .switch input + span strong:after {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    font-family: 'Mukta Malar', Arial;
+    -webkit-backface-visibility: hidden;
+  }
+  .switch input + span strong:before {
+    content: 'Off';
+    transition: all 0.3s ease 0.2s;
+  }
+  .switch input + span strong:after {
+    content: 'On';
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #5628EE;
+    transition: all 0.3s ease;
+    transform: translate(2px, 0);
+  }
+  .switch input:checked + span:before {
+    background: rgba(86, 40, 238, 0.35);
+  }
+  .switch input:checked + span:after {
+    background: #fff;
+    transform: translate(18px, 0);
+  }
+  
+  .switch input:checked + span strong:before {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translate(-2px, 0);
+  }
+  .switch input:checked + span strong:after {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+    transition: all 0.3s ease 0.2s;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  *:before, *:after {
+    box-sizing: border-box;
+  }
+  body .switch {
+    display: inline-block;
+    min-width: 118px;
+  }
+  body .dribbble {
+    position: fixed;
+    display: block;
+    right: 20px;
+    bottom: 20px;
+  }
+  body .dribbble img {
+    display: block;
+    height: 28px;
+  }
+  
