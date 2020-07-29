@@ -1,0 +1,19 @@
+  {
+    "name": "Remover",
+    "version": "1.0",
+    "description": "Hold Ctrl + Alt and click to remove annoying elements on page",
+    "content_scripts": [ 
+      { 
+          "js": [ "jquery-min.js", "background.js" ],
+           "matches": [ "http://*/*", "https://*/*"]
+       }
+   ],
+    "icons": {
+      "16": "images/icon.png",
+      "32": "images/icon.png",
+      "48": "images/icon.png",
+      "128": "images/icon.png",
+      "200": "images/icon.png"
+    },
+    "manifest_version": 2
+  }
