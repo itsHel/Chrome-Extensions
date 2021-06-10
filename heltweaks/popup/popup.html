@@ -1,0 +1,47 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!-- Bootstrap really necessary? -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <style>
+        #notes{
+          list-style-type: none;
+          margin:0;
+          padding:0;
+        }
+        #notes li{
+          border-left: 3px solid rgba(0,0,0,0.9);
+          margin-bottom:7px;
+          padding-left:4px;
+          color:rgba(0,0,0,0.8);
+          font-size:14px;
+          cursor:not-allowed;
+          transition: all 0.3s;
+          border-radius: 2px;
+          white-space: nowrap;
+        }
+        #newNote{
+          padding-top: 0.15rem !important;
+          padding-bottom: 0.15rem !important;
+        }
+        #notes li:hover{
+          background: rgba(0,0,0,0.08);
+        }
+        body{
+          padding:10px;
+          max-width: 600px;
+          min-width: 64px;
+        }
+        li:last-of-type{
+          margin-bottom: 13px;
+        }
+      </style>
+    </head>
+    <body>
+      <ul id=notes></ul>
+      <button class="btn btn-outline-dark btn-sm" id=newNote>new</button>
+    </body>
+      <script src="popup.js"></script>
+
+      
+  </html>
