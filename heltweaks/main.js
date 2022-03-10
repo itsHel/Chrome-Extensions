@@ -58,11 +58,6 @@ window.addEventListener("load", function(){
         addGoogleNotes();
     }
 
-    // Remove prestashop carousel
-    if(window.location.href.match("localhost/prestashop")){
-        $("#carousel").remove();
-    }
-
     // Tab twice to go to first google link
     if(window.location.href.match(/google\.[a-z]{1,3}\/search/i)){
         let tabPressed = false;
