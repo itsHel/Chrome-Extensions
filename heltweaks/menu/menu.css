@@ -1,3 +1,6 @@
+html{
+  -webkit-font-smoothing: antialiased;
+}
 body{
   font-family: 'Mukta Malar', Arial;
   line-height: 20px;
@@ -30,16 +33,16 @@ body{
 }
 
 /* Toggle buttons */
-.switch {
+.switch{
     height: 24px;
     display: block;
     position: relative;
     cursor: pointer;
   }
-.switch input {
+.switch input{
     display: none;
   }
-.switch input + span {
+.switch input + span{
   padding-left: 50px;
   min-height: 24px;
   line-height: 24px;
@@ -49,13 +52,13 @@ body{
   white-space: nowrap;
   transition: color 0.3s ease;
 }
-.switch input + span:before, .switch input + span:after {
+.switch input + span:before, .switch input + span:after{
   content: '';
   display: block;
   position: absolute;
   border-radius: 12px;
 }
-.switch input + span:before {
+.switch input + span:before{
   top: 0;
   left: 0;
   width: 42px;
@@ -63,7 +66,7 @@ body{
   background: #E4ECFA;
   transition: all 0.3s ease;
 }
-.switch input + span:after {
+.switch input + span:after{
   width: 18px;
   height: 18px;
   background: #fff;
@@ -73,13 +76,13 @@ body{
   transition: all 0.45s ease;
 }
 
-.switch input + span strong {
+.switch input + span strong{
   font-weight: normal;
   position: relative;
   display: block;
   top: 1px;
 }
-.switch input + span strong:before, .switch input + span strong:after {
+.switch input + span strong:before, .switch input + span strong:after{
   font-size: 14px;
   font-weight: 500;
   display: block;
@@ -87,11 +90,11 @@ body{
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.switch input + span strong:before {
+.switch input + span strong:before{
   content: 'Off';
   transition: all 0.3s ease 0.2s;
 }
-.switch input + span strong:after {
+.switch input + span strong:after{
   content: 'On';
   opacity: 0;
   visibility: hidden;
@@ -102,46 +105,43 @@ body{
   transition: all 0.3s ease;
   transform: translate(2px, 0);
 }
-.switch input:checked + span:before {
+.switch input:checked + span:before{
   background: rgba(86, 40, 238, 0.35);
 }
-.switch input:checked + span:after {
+.switch input:checked + span:after{
   background: #fff;
   transform: translate(18px, 0);
 }
 
-.switch input:checked + span strong:before {
+.switch input:checked + span strong:before{
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
   transform: translate(-2px, 0);
 }
-.switch input:checked + span strong:after {
+.switch input:checked + span strong:after{
   opacity: 1;
   visibility: visible;
   transform: translate(0, 0);
   transition: all 0.3s ease 0.2s;
 }
-html {
-  -webkit-font-smoothing: antialiased;
-}
-* {
+*{
   box-sizing: border-box;
 }
 *:before, *:after {
   box-sizing: border-box;
 }
-body .switch {
+body .switch{
   display: inline-block;
   min-width: 118px;
 }
-body .dribbble {
+body .dribbble{
   position: fixed;
   display: block;
   right: 20px;
   bottom: 20px;
 }
-body .dribbble img {
+body .dribbble img{
   display: block;
   height: 28px;
 }

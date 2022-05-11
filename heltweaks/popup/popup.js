@@ -7,6 +7,7 @@ chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
     chrome.storage.sync.get('notesUrlCheck', function(data){
       matchUrl = data.notesUrlCheck;
     });
+    
     chrome.tabs.sendMessage(activeTab.id, {request: "notes"}, function(response){
       try{
         if(typeof response == "undefined" || response.notes == "empty")
@@ -161,7 +162,7 @@ const buttonStyles = `line-height: 1.5; cursor:pointer; border-radius: .2rem; di
 const modal = `
   <div id=helsModal style="cursor:pointer; z-index: 9999999; width: 100%; height: 100%; top:0; left:0; display:flex; align-items: center; justify-content: center; position: fixed; background: rgba(0,0,0,0.3);">
     <div id=helsModalDiv style="cursor:default; width:40%; box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.6); border-radius: 6px; background: white; padding:20px;">
-      <h2>New Note</h2>
+      <h2 style="margin: 0.5rem 0;">New Note</h2>
       <textarea id=helsNote style="border-radius: 4px; width:100%; box-sizing:border-box; padding:10px; height:150px;"></textarea>
       <button style="${buttonStyles}" id=helsAddNote>OK</button>
     </div>
