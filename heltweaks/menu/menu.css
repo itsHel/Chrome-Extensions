@@ -1,35 +1,35 @@
 html{
-  -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
 }
 body{
-  font-family: 'Mukta Malar', Arial;
-  line-height: 20px;
-  font-size: 16px;
+    font-family: 'Mukta Malar', Arial;
+    line-height: 20px;
+    font-size: 16px;
 
-  margin: 0;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-  font-weight: 400;
-  color: #212529;
-  text-align: left;
-  background-color: #fff;
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    font-weight: 400;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
 }
 .main{
-  margin:50px auto;
-  max-width:720px;
-  min-width:420px;
-  color:white;
-  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.7);
-  padding:25px 25px;
-  min-height: 700px;
+    margin:50px auto;
+    max-width:720px;
+    min-width:420px;
+    color:white;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.7);
+    padding:25px 25px;
+    min-height: 700px;
 }
 .row{
-  padding:10px 30px;
-  display:flex;
+    padding:10px 30px;
+    display:flex;
 }
 .label{
-  color:rgba(0,0,0,0.75);
-  flex-grow: 1;
-  font-weight: 400;
+    color:rgba(0,0,0,0.75);
+    flex-grow: 1;
+    font-weight: 400;
 }
 
 /* Toggle buttons */
@@ -38,110 +38,110 @@ body{
     display: block;
     position: relative;
     cursor: pointer;
-  }
+}
 .switch input{
     display: none;
-  }
+}
 .switch input + span{
-  padding-left: 50px;
-  min-height: 24px;
-  line-height: 24px;
-  display: block;
-  color: #99A3BA;
-  position: relative;
-  white-space: nowrap;
-  transition: color 0.3s ease;
+    padding-left: 50px;
+    min-height: 24px;
+    line-height: 24px;
+    display: block;
+    color: #99A3BA;
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.3s ease;
 }
 .switch input + span:before, .switch input + span:after{
-  content: '';
-  display: block;
-  position: absolute;
-  border-radius: 12px;
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 12px;
 }
 .switch input + span:before{
-  top: 0;
-  left: 0;
-  width: 42px;
-  height: 24px;
-  background: #E4ECFA;
-  transition: all 0.3s ease;
+    top: 0;
+    left: 0;
+    width: 42px;
+    height: 24px;
+    background: #E4ECFA;
+    transition: all 0.3s ease;
 }
 .switch input + span:after{
-  width: 18px;
-  height: 18px;
-  background: #fff;
-  top: 3px;
-  left: 3px;
-  box-shadow: 0 1px 3px rgba(18, 22, 33, 0.1);
-  transition: all 0.45s ease;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    top: 3px;
+    left: 3px;
+    box-shadow: 0 1px 3px rgba(18, 22, 33, 0.1);
+    transition: all 0.45s ease;
 }
 
 .switch input + span strong{
-  font-weight: normal;
-  position: relative;
-  display: block;
-  top: 1px;
+    font-weight: normal;
+    position: relative;
+    display: block;
+    top: 1px;
 }
 .switch input + span strong:before, .switch input + span strong:after{
-  font-size: 14px;
-  font-weight: 500;
-  display: block;
-  font-family: 'Mukta Malar', Arial;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    font-family: 'Mukta Malar', Arial;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 .switch input + span strong:before{
-  content: 'Off';
-  transition: all 0.3s ease 0.2s;
+    content: 'Off';
+    transition: all 0.3s ease 0.2s;
 }
 .switch input + span strong:after{
-  content: 'On';
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #5628EE;
-  transition: all 0.3s ease;
-  transform: translate(2px, 0);
+    content: 'On';
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #5628EE;
+    transition: all 0.3s ease;
+    transform: translate(2px, 0);
 }
 .switch input:checked + span:before{
-  background: rgba(86, 40, 238, 0.35);
+    background: rgba(86, 40, 238, 0.35);
 }
 .switch input:checked + span:after{
-  background: #fff;
-  transform: translate(18px, 0);
+    background: #fff;
+    transform: translate(18px, 0);
 }
 
 .switch input:checked + span strong:before{
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  transform: translate(-2px, 0);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translate(-2px, 0);
 }
 .switch input:checked + span strong:after{
-  opacity: 1;
-  visibility: visible;
-  transform: translate(0, 0);
-  transition: all 0.3s ease 0.2s;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+    transition: all 0.3s ease 0.2s;
 }
 *{
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 *:before, *:after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 body .switch{
-  display: inline-block;
-  min-width: 118px;
+    display: inline-block;
+    min-width: 118px;
 }
 body .dribbble{
-  position: fixed;
-  display: block;
-  right: 20px;
-  bottom: 20px;
+    position: fixed;
+    display: block;
+    right: 20px;
+    bottom: 20px;
 }
 body .dribbble img{
-  display: block;
-  height: 28px;
+    display: block;
+    height: 28px;
 }

@@ -1,23 +1,19 @@
-const $ = document.querySelector.bind(document);
+chrome.storage.sync.get("borders", function(data){
+    document.querySelector("#borders").checked = data.borders;
+});
+chrome.storage.sync.get("saveScroll", function(data){
+    document.querySelector("#saveScroll").checked = data.saveScroll;
+});
+chrome.storage.sync.get("notesUrlCheck", function(data){
+    document.querySelector("#notesUrlCheck").checked = data.notesUrlCheck;
+});
 
-window.addEventListener("load", function(){
-  chrome.storage.sync.get('borders', function(data){
-    $("#borders").setAttribute("checked", data.borders);
-  });
-  chrome.storage.sync.get('saveScroll', function(data){
-    $("#saveScroll").setAttribute("checked", data.saveScroll);
-  });
-  chrome.storage.sync.get('notesUrlCheck', function(data){
-    $("#notesUrlCheck").setAttribute("checked", data.notesUrlCheck);
-  });
-
-  $("#borders").addEventListener("change", function(){
+document.querySelector("#borders").addEventListener("change", function(){
     chrome.storage.sync.set({borders: this.checked});
-  });
-  $("#saveScroll").addEventListener("change", function(){
+});
+document.querySelector("#saveScroll").addEventListener("change", function(){
     chrome.storage.sync.set({saveScroll: this.checked});
-  });
-  $("#notesUrlCheck").addEventListener("change", function(){
+});
+document.querySelector("#notesUrlCheck").addEventListener("change", function(){
     chrome.storage.sync.set({notesUrlCheck: this.checked});
-  });
 });

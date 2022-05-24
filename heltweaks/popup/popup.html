@@ -1,72 +1,104 @@
-  <!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html>
     <head>
-      <style>
-        #notes{
-          list-style-type: none;
-          margin:0;
-          padding:0;
-        }
-        #notes li{
-          border-left: 3px solid rgba(0,0,0,0.9);
-          margin-bottom:7px;
-          padding-left:4px;
-          padding-right:4px;
-          color:rgba(0,0,0,0.8);
-          font-size:14px;
-          cursor:not-allowed;
-          transition: all 0.3s;
-          border-radius: 2px;
-          white-space: nowrap;
-        }
-        #newNote{
-          padding-top: 0.15rem !important;
-          padding-bottom: 0.15rem !important;
-        }
-        #notes li:hover{
-          background: rgba(0,0,0,0.08);
-        }
-        body{
-          padding: 4px;
-          max-width: 600px;
-          min-width: 40px;
-        }
-        li:last-of-type{
-          margin-bottom: 13px !important;
-        }
-        
-        .btn-outline-dark {
-            color: #343a40;
-            border:1px solid #343a40;
-            padding: 0.25rem 0.5rem;
-            font-size: .875rem;
-            line-height: 1.5;
-            border-radius: 0.2rem;
-            cursor: pointer;
-        }
-        .btn {
-            display: inline-block;
-            font-weight: 400;
-            color: #212529;
-            text-align: center;
-            vertical-align: middle;
-            user-select: none;
-            background-color: transparent;
-            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-        }
-        .btn-outline-dark:hover {
-          color: #fff;
-          background-color: #343a40;
-          border-color: #343a40;
-        }
-        .btn-outline-dark:not(:disabled):not(.disabled).active:focus, .btn-outline-dark:not(:disabled):not(.disabled):active:focus{
-          box-shadow: 0 0 0 0.2rem rgb(52 58 64 / 50%);
-        }
-      </style>
+        <style>
+            #notes{
+                list-style-type: none;
+                margin:0;
+                padding:0;
+            }
+            #notes li{
+                border-left: 3px solid rgba(0,0,0,0.9);
+                margin-bottom:7px;
+                padding: 2px 4px;
+                color:rgba(0,0,0,0.8);
+                font-size:14px;
+                cursor:not-allowed;
+                transition: all 0.3s;
+                border-radius: 3px;
+                white-space: nowrap;
+            }
+            #notes li:hover{
+                background: rgba(0,0,0,0.07);
+            }
+            body{
+                padding: 4px 6px;
+                max-width: 600px;
+                min-width: 40px;
+            }
+            li:last-of-type{
+                margin-bottom: 13px !important;
+            }
+            #newNoteDiv{
+                width: 300px; 
+                display: flex; 
+                display: none;
+                gap: 8px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            #noteContent{
+                border-radius: 4px;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 6px 6px;
+                height: 100px;
+            }
+            #newNoteHeading{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+            #newNoteClose{
+                font-size: 1.5em;
+                cursor: pointer;
+            }
+            
+            .btn-outline-dark{
+                color: #343a40;
+                border: 1px solid #343a40;
+                padding: 4px 8px;
+                font-size: 14px;
+                border-radius: 0.2rem;
+                cursor: pointer;
+            }
+            .btn{
+                display: inline-block;
+                font-weight: 400;
+                color: #212529;
+                text-align: center;
+                vertical-align: middle;
+                user-select: none;
+                background-color: transparent;
+                transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            }
+            .btn-outline-dark:hover{
+                color: #fff;
+                background-color: #343a40;
+                border-color: #343a40;
+            }
+            .btn-outline-dark:not(:disabled):not(.disabled).active:focus, .btn-outline-dark:not(:disabled):not(.disabled):active:focus{
+                box-shadow: 0 0 0 0.2rem rgb(52 58 64 / 50%);
+            }
+        </style>
     </head>
+
     <body>
-      <ul id=notes></ul>
-      <button class="btn btn-outline-dark" id=newNote>new</button>
+        <div id=noteInterface>
+            <ul id=notes></ul>
+            <button class="btn btn-outline-dark" id=newNoteButton>New</button>
+        </div>
+
+        <div id=newNoteDiv>
+            <div id=newNoteHeading>
+                <h2 style="margin:0;">New Note</h2>
+                <span id=newNoteClose>&#10006;</span>
+            </div>
+
+            <textarea id=noteContent></textarea>
+            <button class="btn btn-outline-dark" id=addNoteConfirmButton>Add</button>
+        </div>
     </body>
+
     <script src="popup.js"></script>  
-  </html>
+</html>

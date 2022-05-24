@@ -1,29 +1,27 @@
-  {
+{
     "name": "HelTweaks",
-    "version": "1.0.4",
-    "description": "Customizing",
+    "version": "1.0.5",
+    "description": "Add notes to pages, remove elements and more...",
     "permissions": ["storage", "activeTab", "declarativeContent"],
     "options_page": "menu/menu.html",
     "background": {
-      "scripts": ["background.js"],
-      "persistent": false
+        "service_worker": "background.js"
     },
     "content_scripts": [
-      { 
-          "js": [ "main.js" ],
-          "matches": [ "http://*/*", "https://*/*"]
-      }
-   ],
+        { 
+            "js": [ "main.js" ],
+            "matches": [ "http://*/*", "https://*/*"]
+        }
+    ],
     "icons": {
-      "16": "images/icon.png",
-      "32": "images/icon.png",
-      "48": "images/icon.png",
-      "128": "images/icon.png",
-      "200": "images/icon.png"
+        "16": "images/icon.png",
+        "32": "images/icon.png",
+        "48": "images/icon.png",
+        "128": "images/icon.png",
+        "200": "images/icon.png"
     },
-   
-    "browser_action": {
-      "default_popup": "popup/popup.html"
+    "action": {
+        "default_popup": "popup/popup.html"
     },
-    "manifest_version": 2
-  }
+    "manifest_version": 3
+}
