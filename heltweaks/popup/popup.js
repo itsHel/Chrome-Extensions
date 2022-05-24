@@ -56,7 +56,7 @@ chrome.tabs.query({currentWindow: true, active: true}, async function (tabs){
         });
 
         document.querySelector("#notes").addEventListener("click", function(e){
-            if(e.target.nodeName == "LI"){
+            if(e.target.tagName == "LI"){
                 storageNotes = storageNotes.filter(note => 
                     note != e.target.textContent
                 );
