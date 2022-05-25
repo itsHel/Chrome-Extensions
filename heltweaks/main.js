@@ -1,3 +1,6 @@
+// TODO
+//  - add toggling for all functions to menu
+
 // Changes format of stackoverflow dates
 // Double tab on (750ms waittime) google - go to first search result
 // Copy url with scroll                         Ctrl + Alt + c
