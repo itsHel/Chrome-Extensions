@@ -3,7 +3,7 @@
 
 // Changes format of stackoverflow/stackexchange dates
 // Double Tab on (750ms waittime) Google - go to first search result
-// Changes cursor of target=_blank links
+// Changes cursor of 'target=_blank' links
 
 // Disabled // Copy url with scroll                         Ctrl + Alt + c
 // Disabled // Saves scrolled position                      Chrome autosaves scroll, Opera doesnt?
@@ -14,6 +14,10 @@
 
 // Notes 
 //      - make notes on any site
+//      - saved in localStorage
+
+// Google Notes
+//      - make notes on Google links
 //      - saved in localStorage
 
 'use strict';
@@ -333,7 +337,10 @@
 
             createNote(link, text);
 
-            link.querySelector(".note-textarea").value = text;
+            let textareaEl = link.querySelector(".note-textarea");
+            if(textareaEl){
+                textareaEl.value = text;
+            }
         });
 
         function createNote(link, text){
@@ -355,7 +362,7 @@
 
             let div = "<div class='link-note' title='" + text + "' style='" + style + "'>" + text + "</div>";
 
-            link.insertAdjacentHTML('beforeend', div);
+            link.insertAdjacentHTML("beforeend", div);
             link.querySelector(".link-note").addEventListener("click", function(){
                 this.style.display = "none";
             });
