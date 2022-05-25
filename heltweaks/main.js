@@ -45,8 +45,8 @@
             setGoogleTab();
         }
 
-        if(window.location.href.match("stackoverflow.com/")){
-            changeStackOverflowDates();
+        if(window.location.href.match(/stackoverflow\.com\/|stackexchange\.com\//)){
+            changeStackDates();
         }
     });
 
@@ -58,7 +58,7 @@
         });
     }
 
-    function changeStackOverflowDates(){
+    function changeStackDates(){
         $$(".user-action-time .relativetime").forEach(function(element){
             element.textContent = element.getAttribute("title").slice(0, 16);
         });
