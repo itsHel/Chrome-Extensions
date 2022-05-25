@@ -267,6 +267,10 @@
             }
 
             function addNote(e){
+                if(e.key == "Escape"){
+                    area.style.visibility = "hidden";
+                }
+                
                 if(e.shiftKey && e.key == "Enter"){
                     let link = e.target.closest(linkSelector);
 
