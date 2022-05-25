@@ -227,26 +227,28 @@
     }
 
     function addGoogleNotes(){
+        const storageName = "HellGoogleNotes";
+        
         const linkSelector = ".yuRUbf";
         const linkParentOverflowSelector = ".jtfYYd";
 
-        let data = JSON.parse(window.localStorage.helsGoogleNotes || "false");
+        let data = JSON.parse(window.localStorage[storageName] || "false");
 
         let links = document.querySelectorAll(linkSelector);
         
         if(!links)
             return;
 
-        const style = 'cursor:pointer;background:#fff;z-index: 999999;position:absolute; left:100%; top:0; padding-left:4px; color:#4d5156; max-width:300px; max-height:110px; overflow:hidden; text-overflow:ellipsis; border-left:5px solid #42464a;';
-        const svgStyle = 'style="width:9px; height:9px; margin-bottom:1px; cursor:pointer;"';
-        const svgPac = '<svg class=mysvg viewBox="0 0 541.6 571.11" ' + svgStyle + '><path style="fill:#70757a" d="M535.441,412.339A280.868,280.868 0 1,1 536.186,161.733L284.493,286.29Z"/></svg>';
-        const textarea = `<textarea placeholder='Shift + Enter&#10;to confirm' style="margin:1px;box-sizing:border-box;min-height:60px;max-height:84px;visibility:hidden;font-size:14px;min-width:220px;padding:6px 10px;position:absolute;top:12px;background:#fff;border:1px solid rgba(0,0,0,.20);z-index:4;transition:opacity 0.2s;box-shadow:0 2px 4px rgb(0 0 0 / 20%); outline: 0;border-color: #34bdfe;box-shadow: 0 0 2px 1px #2d99cc80;"></textarea>`;
+        const style = "cursor:pointer;background:#fff;z-index: 999999;position:absolute; left:100%; top:0; padding-left:4px; color:#4d5156; max-width:300px; max-height:110px; overflow:hidden; text-overflow:ellipsis; border-left:5px solid #42464a;";
+        const svgStyle = "style='width:9px; height:9px; margin-bottom:1px; cursor:pointer;'";
+        const svgPac = "<svg class=mysvg viewBox='0 0 541.6 571.11' " + svgStyle + "><path style='fill:#70757a' d='M535.441,412.339A280.868,280.868 0 1,1 536.186,161.733L284.493,286.29Z'/></svg>";
+        const textarea = `<textarea class=note-textarea placeholder='Shift + Enter&#10;to confirm' style="margin:1px;box-sizing:border-box;min-height:60px;max-height:84px;visibility:hidden;font-size:14px;min-width:220px;padding:6px 10px;position:absolute;top:12px;background:#fff;border:1px solid rgba(0,0,0,.20);z-index:4;transition:opacity 0.2s;box-shadow:0 2px 4px rgb(0 0 0 / 20%); outline: 0;border-color: #34bdfe;box-shadow: 0 0 2px 1px #2d99cc80;"></textarea>`;
 
         // .jtfYYd contain:initial; overflow:visible;
         document.querySelectorAll(".eFM0qc > span").forEach(linkNav => {
             let div = "<div class='link-add-note' style='position:relative; display: inline-block; visibility:visible; margin-right:6px;'>" + svgPac + textarea + "</div>";
 
-            linkNav.insertAdjacentHTML('afterend', div);
+            linkNav.insertAdjacentHTML("afterend", div);
             linkNav.parentNode.querySelector(".link-add-note").addEventListener("click", openNote);
             
             let area = linkNav.parentNode.querySelector("textarea");
@@ -289,20 +291,20 @@
                     createNote(link, text);
                     area.style.visibility = "hidden";
 
-                    window.localStorage.helsGoogleNotes = JSON.stringify(data);
+                    window.localStorage[storageName] = JSON.stringify(data);
                 }
             }
 
             function fixHeight(){
-                this.style.height = '1px';
-                this.style.height = (this.scrollHeight) + 'px';
+                this.style.height = "1px";
+                this.style.height = (this.scrollHeight) + "px";
             }
         });
 
-        // Add data
         if(!data)
             return;
 
+        // Add notes
         links.forEach(link => {
             let href = link.querySelector("a").href;
             let match = href.match(/\/\/(.+?)(\/|$)/);
@@ -326,6 +328,8 @@
             let text = data[url];
 
             createNote(link, text);
+
+            link.querySelector(".note-textarea").value = text;
         });
 
         function createNote(link, text){
