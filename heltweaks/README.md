@@ -10,7 +10,7 @@
 - Double tapping __Tab__ on Google search = go to first link
 
 # Element removing
-Hold `Ctrl + Alt` and click element to remove it
+Hold `Ctrl + Alt` and click element to remove it  
 Press `Ctrl + Alt + z` to bring it back
 Shows element borders while removing - can be disabled in _extension settings_
 
