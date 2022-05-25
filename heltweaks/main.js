@@ -1,11 +1,12 @@
 // TODO
 //  - add toggling for all functions to menu
 
-// Changes format of stackoverflow dates
-// Double tab on (750ms waittime) google - go to first search result
-// Copy url with scroll                         Ctrl + Alt + c
+// Changes format of stackoverflow/stackexchange dates
+// Double Tab on (750ms waittime) Google - go to first search result
 // Changes cursor of target=_blank links
-// Saves scrolled position                      Chrome autosaves scroll, Opera doesnt?
+
+// Disabled // Copy url with scroll                         Ctrl + Alt + c
+// Disabled // Saves scrolled position                      Chrome autosaves scroll, Opera doesnt?
 
 // Remover
 //      - Hold Ctrl + Alt to remove any element on page by click                           
@@ -36,7 +37,7 @@
         setNotes();
         setRemover();
         changeBlankCursor();
-        scrollOnLoad();
+        // scrollOnLoad();
         // setScrollAutosave();
 
         if(window.location.href.match(/google\.[a-z]+?\/search\?/i)){
@@ -54,39 +55,6 @@
             chrome.storage.sync.get(name, function(data){
                 resolve(data[name]);
             });
-        });
-    }
-
-    function scrollOnLoad(){
-        if(window.location.href.match("helsscroll=")){
-            // Scroll with copy url
-            let url = window.location.href;
-            let html = $("html");
-
-            html.style.scrollBehavior = "smooth";
-            window.scrollTo(0, parseInt(url.substring(url.lastIndexOf("helsscroll=") + 11, url.lastIndexOf("helsscroll=") + 11 + 10)));
-            html.style.scrollBehavior = "auto";
-        } else if(HellTweaks.saveScroll && window.localStorage["helsScroll"]){
-            // Scroll with localStorage history
-            let scrolls = JSON.parse(window.localStorage["helsScroll"]);
-            let html = $("html");
-
-            for(let index in scrolls){
-                if(scrolls[index].url == window.location.href){
-                    html.style.scrollBehavior = "smooth";
-                    window.scrollTo(0, scrolls[index].yPos);
-                    html.style.scrollBehavior = "auto";
-                }
-            }
-        }
-
-        window.addEventListener("keydown", function(e){
-            if(e.key == "&"){                               // Alt + Ctrl + c || rightAlt + c
-                const url = window.location.href;
-                const newUrl = url + (url.match(/\?/) ? "&" : "?") + "helsscroll=" + parseInt(window.scrollY);
-                
-                window.navigator.clipboard.writeText(newUrl);
-            }
         });
     }
 
@@ -407,6 +375,39 @@
                 } else {
                     window.localStorage["helsScroll"] = JSON.stringify([{url: window.location.href, yPos: window.scrollY}]);
                 }
+            }
+        });
+    }
+    
+    function scrollOnLoad(){
+        if(window.location.href.match("helsscroll=")){
+            // Scroll with copy url
+            let url = window.location.href;
+            let html = $("html");
+
+            html.style.scrollBehavior = "smooth";
+            window.scrollTo(0, parseInt(url.substring(url.lastIndexOf("helsscroll=") + 11, url.lastIndexOf("helsscroll=") + 11 + 10)));
+            html.style.scrollBehavior = "auto";
+        } else if(HellTweaks.saveScroll && window.localStorage["helsScroll"]){
+            // Scroll with localStorage history
+            let scrolls = JSON.parse(window.localStorage["helsScroll"]);
+            let html = $("html");
+
+            for(let index in scrolls){
+                if(scrolls[index].url == window.location.href){
+                    html.style.scrollBehavior = "smooth";
+                    window.scrollTo(0, scrolls[index].yPos);
+                    html.style.scrollBehavior = "auto";
+                }
+            }
+        }
+
+        window.addEventListener("keydown", function(e){
+            if(e.key == "&"){                               // Alt + Ctrl + c || rightAlt + c
+                const url = window.location.href;
+                const newUrl = url + (url.match(/\?/) ? "&" : "?") + "helsscroll=" + parseInt(window.scrollY);
+                
+                window.navigator.clipboard.writeText(newUrl);
             }
         });
     }
