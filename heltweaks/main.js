@@ -154,6 +154,8 @@
 
                         chrome.runtime.sendMessage({request: "setBadge", notesCount: notes.length});
                     }
+                    
+                    return true;
                 }
             );
 
