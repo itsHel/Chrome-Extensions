@@ -35,23 +35,25 @@
     };
 
     window.addEventListener("load", async function(){
-        HellTweaks.saveScroll = await getSetting("saveScroll");
-        HellTweaks.notesUrlCheck = await getSetting("notesUrlCheck");
-
-        setNotes();
-        setRemover();
-        changeBlankCursor();
-        // scrollOnLoad();
-        // setScrollAutosave();
-
-        if(window.location.href.match(/google\.[a-z]+?\/search\?/i)){
-            addGoogleNotes();
-            setGoogleTab();
-        }
-
-        if(window.location.href.match(/stackoverflow\.com\/|stackexchange\.com\//)){
-            changeStackDates();
-        }
+        try{
+            HellTweaks.saveScroll = await getSetting("saveScroll");
+            HellTweaks.notesUrlCheck = await getSetting("notesUrlCheck");
+    
+            setNotes();
+            setRemover();
+            changeBlankCursor();
+            // scrollOnLoad();
+            // setScrollAutosave();
+    
+            if(window.location.href.match(/google\.[a-z]+?\/search\?/i)){
+                addGoogleNotes();
+                setGoogleTab();
+            }
+    
+            if(window.location.href.match(/stackoverflow\.com\/|stackexchange\.com\//)){
+                changeStackOverflowDates();
+            }
+        } catch(e){}
     });
 
     async function getSetting(name){
