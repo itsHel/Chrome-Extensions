@@ -8,8 +8,8 @@ chrome.runtime.onMessage.addListener(
             } else {
                 chrome.action.setBadgeText({text: (request.notesCount) ? request.notesCount.toString() : ""});
             }
-            
-            return true;
         }
+		
+        return true;
     }
 );
