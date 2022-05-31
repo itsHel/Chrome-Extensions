@@ -1,12 +1,11 @@
-// TODO
-//  - add toggling for all functions to menu
+// Changes format of stackoverflow dates
+// Double tab on (750ms waittime) google - go to first search result
+// Changes cursor of target=_blank links
+// // Copy url with scroll                         Ctrl + Alt + c
+// // Saves scrolled position                      Chrome autosaves scroll, Opera doesnt?
 
-// Changes format of stackoverflow/stackexchange dates
-// Double Tab on (750ms waittime) Google - go to first search result
-// Changes cursor of 'target=_blank' links
 
-// Disabled // Copy url with scroll                         Ctrl + Alt + c
-// Disabled // Saves scrolled position                      Chrome autosaves scroll, Opera doesnt?
+
 
 // Remover
 //      - Hold Ctrl + Alt to remove any element on page by click                           
@@ -16,8 +15,8 @@
 //      - make notes on any site
 //      - saved in localStorage
 
-// Google Notes
-//      - make notes on Google links
+// Google Notes 
+//      - make notes on any site
 //      - saved in localStorage
 
 'use strict';
@@ -64,7 +63,40 @@
         });
     }
 
-    function changeStackDates(){
+    function scrollOnLoad(){
+        if(window.location.href.match("helsscroll=")){
+            // Scroll with copy url
+            let url = window.location.href;
+            let html = $("html");
+
+            html.style.scrollBehavior = "smooth";
+            window.scrollTo(0, parseInt(url.substring(url.lastIndexOf("helsscroll=") + 11, url.lastIndexOf("helsscroll=") + 11 + 10)));
+            html.style.scrollBehavior = "auto";
+        } else if(HellTweaks.saveScroll && window.localStorage["helsScroll"]){
+            // Scroll with localStorage history
+            let scrolls = JSON.parse(window.localStorage["helsScroll"]);
+            let html = $("html");
+
+            for(let index in scrolls){
+                if(scrolls[index].url == window.location.href){
+                    html.style.scrollBehavior = "smooth";
+                    window.scrollTo(0, scrolls[index].yPos);
+                    html.style.scrollBehavior = "auto";
+                }
+            }
+        }
+
+        window.addEventListener("keydown", function(e){
+            if(e.key == "&"){                               // Alt + Ctrl + c || rightAlt + c
+                const url = window.location.href;
+                const newUrl = url + (url.match(/\?/) ? "&" : "?") + "helsscroll=" + parseInt(window.scrollY);
+                
+                window.navigator.clipboard.writeText(newUrl);
+            }
+        });
+    }
+
+    function changeStackOverflowDates(){
         $$(".user-action-time .relativetime").forEach(function(element){
             element.textContent = element.getAttribute("title").slice(0, 16);
         });
@@ -156,8 +188,6 @@
 
                         chrome.runtime.sendMessage({request: "setBadge", notesCount: notes.length});
                     }
-                    
-                    return true;
                 }
             );
 
@@ -235,12 +265,10 @@
     }
 
     function addGoogleNotes(){
-        const storageName = "HellGoogleNotes";
-        
         const linkSelector = ".yuRUbf";
         const linkParentOverflowSelector = ".jtfYYd";
 
-        let data = JSON.parse(window.localStorage[storageName] || "false");
+        let data = JSON.parse(window.localStorage["HellGoogleNotes"] || "false");
 
         let links = document.querySelectorAll(linkSelector);
         
@@ -250,7 +278,7 @@
         const style = "cursor:pointer;background:#fff;z-index: 999999;position:absolute; left:100%; top:0; padding-left:4px; color:#4d5156; max-width:300px; max-height:110px; overflow:hidden; text-overflow:ellipsis; border-left:5px solid #42464a;";
         const svgStyle = "style='width:9px; height:9px; margin-bottom:1px; cursor:pointer;'";
         const svgPac = "<svg class=mysvg viewBox='0 0 541.6 571.11' " + svgStyle + "><path style='fill:#70757a' d='M535.441,412.339A280.868,280.868 0 1,1 536.186,161.733L284.493,286.29Z'/></svg>";
-        const textarea = `<textarea class=note-textarea placeholder='Shift + Enter&#10;to confirm' style="margin:1px;box-sizing:border-box;min-height:60px;max-height:84px;visibility:hidden;font-size:14px;min-width:220px;padding:6px 10px;position:absolute;top:12px;background:#fff;border:1px solid rgba(0,0,0,.20);z-index:4;transition:opacity 0.2s;box-shadow:0 2px 4px rgb(0 0 0 / 20%); outline: 0;border-color: #34bdfe;box-shadow: 0 0 2px 1px #2d99cc80;"></textarea>`;
+        const textarea = `<textarea class="note-textarea" placeholder='Shift + Enter&#10;to confirm' style="margin:1px;box-sizing:border-box;min-height:60px;max-height:84px;visibility:hidden;font-size:14px;min-width:220px;padding:6px 10px;position:absolute;top:12px;background:#fff;border:1px solid rgba(0,0,0,.20);z-index:4;transition:opacity 0.2s;box-shadow:0 2px 4px rgb(0 0 0 / 20%); outline: 0;border-color: #34bdfe;box-shadow: 0 0 2px 1px #2d99cc80;"></textarea>`;
 
         // .jtfYYd contain:initial; overflow:visible;
         document.querySelectorAll(".eFM0qc > span").forEach(linkNav => {
@@ -278,7 +306,7 @@
                 if(e.key == "Escape"){
                     area.style.visibility = "hidden";
                 }
-                
+
                 if(e.shiftKey && e.key == "Enter"){
                     let link = e.target.closest(linkSelector);
 
@@ -303,7 +331,7 @@
                     createNote(link, text);
                     area.style.visibility = "hidden";
 
-                    window.localStorage[storageName] = JSON.stringify(data);
+                    window.localStorage["HellGoogleNotes"] = JSON.stringify(data);
                 }
             }
 
@@ -394,39 +422,6 @@
                 } else {
                     window.localStorage["helsScroll"] = JSON.stringify([{url: window.location.href, yPos: window.scrollY}]);
                 }
-            }
-        });
-    }
-    
-    function scrollOnLoad(){
-        if(window.location.href.match("helsscroll=")){
-            // Scroll with copy url
-            let url = window.location.href;
-            let html = $("html");
-
-            html.style.scrollBehavior = "smooth";
-            window.scrollTo(0, parseInt(url.substring(url.lastIndexOf("helsscroll=") + 11, url.lastIndexOf("helsscroll=") + 11 + 10)));
-            html.style.scrollBehavior = "auto";
-        } else if(HellTweaks.saveScroll && window.localStorage["helsScroll"]){
-            // Scroll with localStorage history
-            let scrolls = JSON.parse(window.localStorage["helsScroll"]);
-            let html = $("html");
-
-            for(let index in scrolls){
-                if(scrolls[index].url == window.location.href){
-                    html.style.scrollBehavior = "smooth";
-                    window.scrollTo(0, scrolls[index].yPos);
-                    html.style.scrollBehavior = "auto";
-                }
-            }
-        }
-
-        window.addEventListener("keydown", function(e){
-            if(e.key == "&"){                               // Alt + Ctrl + c || rightAlt + c
-                const url = window.location.href;
-                const newUrl = url + (url.match(/\?/) ? "&" : "?") + "helsscroll=" + parseInt(window.scrollY);
-                
-                window.navigator.clipboard.writeText(newUrl);
             }
         });
     }
